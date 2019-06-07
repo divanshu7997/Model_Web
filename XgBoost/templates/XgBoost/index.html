@@ -1,0 +1,32 @@
+<html> 
+
+<head>
+    <title>Elucidata</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <base target="_blank" rel="noopener noreferrer">-->
+</head>
+
+<body>
+    <h1>XgBoost Algorithm</h1>
+    <h2> Upload Test File </h2>
+    <h4>(File have to be in .csv Format)</h4>
+
+   
+    <form action="{% url 'op1' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="excel" value="Upload">
+      {% csrf_token %}
+      <input type="submit" value="Output" name = "op1">
+    </form>
+
+    <form action="http://google.com">
+        <input type="submit" value="Go to Google" />
+    </form>
+
+
+
+</body>
+{% csrf_token %}
+
+</html>

@@ -1,0 +1,25 @@
+<html> 
+
+<head>
+<title>Elucidata</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>MSM output analyzer</h1>
+    <h3> Operation-1</h3>
+    <h2 style="color: red"> No Excel File</h2>
+   
+    <form action="{% url 'op1' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="excel" value="Upload">
+      {% csrf_token %}
+      <input type="submit" value="Output" name = "op1">
+      {% csrf_token %}
+    </form>
+
+</body>
+{% csrf_token %}
+
+</html>
