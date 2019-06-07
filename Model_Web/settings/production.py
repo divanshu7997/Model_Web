@@ -15,17 +15,29 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'diivanshu@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('Email_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Divanshu diivanshu@gmail.com'
+
+ADMINS = (
+    ('Divanshu', 'diivanshu@gmail.com')
+)
+MANAGERS = ADMINS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$@&*)#(#!esa^!1(jxw$$242h9g3rnzqtt-0v3^!qnioi)qzu3'
+SECRET_KEY = os.environ.get('SECRET_KEY', '$@&*)#(#!esa^!1(jxw$$242h9g3rnzqtt-0v3^!qnioi)qzu3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['model-web.herokuapp.com', '127.0.0.1']
+
 
 
 # Application definition
@@ -75,11 +87,16 @@ WSGI_APPLICATION = 'Model_Web.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+# DATABASES['default']['CONN_MAX_AGE'] = 500
 
 
 # Password validation
