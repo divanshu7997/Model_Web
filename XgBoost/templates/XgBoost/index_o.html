@@ -23,8 +23,9 @@
     </form>
 
     <h1> Result </h1>
-    {% for element in con_recommendation %}
-        {{ element }}
+    {% for key, value in con_recommendation.items %}
+    <h4> {{key}} </h4>
+    <h5>{{value}}</h5>
     {% endfor %}
 
     {{ val }}
