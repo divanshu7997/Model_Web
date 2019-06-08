@@ -5,6 +5,7 @@ import os
 from django.conf import settings
 from django.http import HttpResponse
 from joblib import load, dump
+import numpy as np
 
 ppat = 'D:/2/models/Model_Web/XgBoost/templates/XgBoost'
 def home(request):
@@ -15,30 +16,23 @@ def op1(request):
     if request.method=='POST':
         # try:
         file = request.FILES['excel']
-        df = pd.read_excel(file)
+        df = pd.read_csv(file)
+        clmn = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12', 'T13',
+       'T14', 'T15', 'T16', 'T17', 'T18', 'T19', 'T20', 'T21', 'T22', 'T23',
+       'T24', 'T25', 'T26', 'T27', 'T28']
+        rst_clmn = []
+        for i in df.columns:
+            if i not in clmn:
+                rst_clmn.append(i)
+        df = df.drop(rst_clmn, axis = 1)
         val = load('XgBoost/Results/solution.joblib')
-        print(val)
-        return render(request, 'XgBoost/index_o.html', {'con_recommendation': [1]*10, 'val':val})
+        df = df.as_matrix()
+        pred = val['RandonForest@#'].predict(df)
+
+        return render(request, 'XgBoost/index_o.html', {'con_recommendation': pred})
         # except:
         #     return render(request, 'XgBoost/index_2.html')
 
-# path = 'file:///K:/pras/django/Elucidata/api/Results/result2.xlsx'
 
-import os, tempfile, zipfile
-from wsgiref.util import FileWrapper
-from django.conf import settings
-import mimetypes
-
-# f = 'D:/2/models/Model_Web/XgBoost/Results/'
-f = 'XgBoost/'
-
-def download_1(request):
-    file_path= f+"op1_result.xlsx" # Select your path of file here.
-    download_name ="op1_result1.xlsx"
-    # if os.path.exists(file_path):
-    with open(file_path, 'rb') as fh:
-        response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-        response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-        return response
-    # else:
-    #     print('Not Working')
+def op2(request):
+    return render(request, 'XgBoost/SmartControlsAssignment.html')
