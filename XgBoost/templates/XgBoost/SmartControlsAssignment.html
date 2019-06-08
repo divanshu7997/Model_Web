@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14348,12 +14348,12 @@ AucRoc score: 0.5378794287496714
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">encoder</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]))</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">])</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;GRADE&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;GRADE&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">scaling</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>   
     <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
     <span class="c1"># from sklearn.preprocessing import MinMaxScaler</span>
@@ -14434,7 +14434,7 @@ There are several heuristics for doing so, but the most common way is to simply 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">upSample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -14464,7 +14464,10 @@ There are several heuristics for doing so, but the most common way is to simply 
     <span class="n">df_upsampled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_majority</span><span class="p">,</span> <span class="n">df_minority_upsampled1</span><span class="p">,</span><span class="n">df_minority_upsampled2</span><span class="p">,</span><span class="n">df_minority_upsampled3</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new class counts after up sampling&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">df_upsampled</span><span class="o">.</span><span class="n">GRADE</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">df_upsampled</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;GRADE&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df_upsampled</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">df_upsampled</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df_upsampled</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;GRADE&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span>
+
 <span class="k">def</span> <span class="nf">upSample1</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;..UpSampling on input dataset&#39;</span><span class="p">)</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -14482,7 +14485,9 @@ There are several heuristics for doing so, but the most common way is to simply 
     <span class="n">df_upsampled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_majority</span><span class="p">,</span> <span class="n">df_minority_upsampled</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new class counts after up sampling&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">df_upsampled</span><span class="o">.</span><span class="n">GRADE</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">df_upsampled</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;GRADE&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df_upsampled</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">df_upsampled</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df_upsampled</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;GRADE&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span>
 </pre></div>
 
     </div>
@@ -14513,7 +14518,7 @@ The most common heuristic for doing so is resampling without replacement.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">downSample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
@@ -14547,7 +14552,9 @@ The most common heuristic for doing so is resampling without replacement.</p>
     <span class="c1"># Display new class counts</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new class counts after down sampling&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">df_downsampled</span><span class="o">.</span><span class="n">GRADE</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">df_downsampled</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;GRADE&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df_downsampled</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">df_downsampled</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df_downsampled</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;GRADE&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span>
 </pre></div>
 
     </div>
@@ -14572,14 +14579,19 @@ The most common heuristic for doing so is resampling without replacement.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[130]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">smote</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;..UpSampling on input dataset&#39;</span><span class="p">)</span>
     <span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="k">import</span> <span class="n">SMOTE</span>
-    <span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="s1">&#39;minority&#39;</span><span class="p">)</span>
-    <span class="n">X_sm</span><span class="p">,</span> <span class="n">y_sm</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">X_sm</span><span class="p">,</span> <span class="n">y_sm</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">c</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="s1">&#39;minority&#39;</span><span class="p">)</span>
+        <span class="n">X_sm</span><span class="p">,</span> <span class="n">y_sm</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_sm</span><span class="p">,</span> <span class="n">y_sm</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c1">#     X_sm = X_sm[:,:-1]</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new class counts after up sampling&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">X_sm</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_sm</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">X_sm</span><span class="p">,</span><span class="n">y_sm</span>
@@ -15744,6 +15756,382 @@ confusion matrix
    micro avg       1.00      1.00      1.00     40510
    macro avg       1.00      1.00      1.00     40510
 weighted avg       1.00      1.00      1.00     40510
+
+____________________________________________________________________________________________________
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[133]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">machineLearningModel1</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>   
+    <span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;RandonForest&#39;</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(),</span>
+    <span class="c1">#     &#39;SVM&#39;: SVC(kernel=&#39;linear&#39;, class_weight=&#39;balanced&#39;, probability=True),</span>
+        <span class="s1">&#39;xgboost&#39;</span><span class="p">:</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">()</span>
+             <span class="p">}</span>
+    <span class="n">balancing_technique</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;UpSample&#39;</span><span class="p">:</span> <span class="n">upSample</span><span class="p">,</span>
+        <span class="s1">&#39;DownSample&#39;</span><span class="p">:</span> <span class="n">downSample</span><span class="p">,</span>
+        <span class="s1">&#39;smote&#39;</span><span class="p">:</span> <span class="n">smote</span>
+    <span class="p">}</span>
+
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">balancing_technique</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">encoder</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]))</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">])</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;GRADE&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;. performing &#39;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s1">&#39; model using &#39;</span><span class="o">+</span><span class="n">j</span><span class="o">+</span><span class="s1">&#39; Balancing algorithm&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">Xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">balancing_technique</span><span class="p">[</span><span class="n">j</span><span class="p">](</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">Xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+            <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">scaling</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="s1">&#39;@&#39;</span><span class="o">+</span><span class="n">j</span><span class="o">+</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="n">k</span><span class="p">,</span><span class="n">models</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+            <span class="n">evalute</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[134]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">machineLearningModel1</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1. performing RandonForest model using  Balancing algorithm
+(61499, 28) (20500, 28)
+accuracy score: 0.9789268292682927
+----------------------------------------------------------------------------------------------------
+confusion matrix
+[[20047     0     1    10]
+ [  198     0     0     0]
+ [   51     0     1     6]
+ [  166     0     0    20]]
+----------------------------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99     20058
+           1       0.00      0.00      0.00       198
+           2       0.50      0.02      0.03        58
+           3       0.56      0.11      0.18       186
+
+   micro avg       0.98      0.98      0.98     20500
+   macro avg       0.51      0.28      0.30     20500
+weighted avg       0.97      0.98      0.97     20500
+
+____________________________________________________________________________________________________
+
+
+2. performing RandonForest model using UpSample Balancing algorithm
+..UpSampling on input dataset
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\Users\Flash\Anaconda3\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
+C:\Users\Flash\Anaconda3\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
+C:\Users\Flash\Anaconda3\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>new class counts after up sampling
+3    80220
+2    80220
+1    80220
+0    80220
+Name: GRADE, dtype: int64
+(240660, 28) (80220, 28)
+accuracy score: 0.999800548491648
+----------------------------------------------------------------------------------------------------
+confusion matrix
+[[20064     0     5    11]
+ [    0 20081     0     0]
+ [    0     0 20155     0]
+ [    0     0     0 19904]]
+----------------------------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00     20080
+           1       1.00      1.00      1.00     20081
+           2       1.00      1.00      1.00     20155
+           3       1.00      1.00      1.00     19904
+
+   micro avg       1.00      1.00      1.00     80220
+   macro avg       1.00      1.00      1.00     80220
+weighted avg       1.00      1.00      1.00     80220
+
+____________________________________________________________________________________________________
+
+
+3. performing RandonForest model using DownSample Balancing algorithm
+..DownSampling on input dataset
+new class counts after down sampling
+3    180
+2    180
+1    180
+0    180
+Name: GRADE, dtype: int64
+(540, 28) (180, 28)
+accuracy score: 0.49444444444444446
+----------------------------------------------------------------------------------------------------
+confusion matrix
+[[27 16  2  5]
+ [14 15  1  7]
+ [ 1  2 33  7]
+ [ 6 13 17 14]]
+----------------------------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.56      0.54      0.55        50
+           1       0.33      0.41      0.36        37
+           2       0.62      0.77      0.69        43
+           3       0.42      0.28      0.34        50
+
+   micro avg       0.49      0.49      0.49       180
+   macro avg       0.48      0.50      0.48       180
+weighted avg       0.49      0.49      0.49       180
+
+____________________________________________________________________________________________________
+
+
+4. performing RandonForest model using smote Balancing algorithm
+..UpSampling on input dataset
+new class counts after up sampling
+(320880, 28) (320880,)
+(240660, 28) (80220, 28)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\Users\Flash\Anaconda3\lib\site-packages\sklearn\ensemble\forest.py:246: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
+  &#34;10 in version 0.20 to 100 in 0.22.&#34;, FutureWarning)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>accuracy score: 0.993779606083271
+----------------------------------------------------------------------------------------------------
+confusion matrix
+[[19733    87    27   222]
+ [   90 20041     1     6]
+ [    0     0 20100     0]
+ [   60     5     1 19847]]
+----------------------------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.99      0.98      0.99     20069
+           1       1.00      1.00      1.00     20138
+           2       1.00      1.00      1.00     20100
+           3       0.99      1.00      0.99     19913
+
+   micro avg       0.99      0.99      0.99     80220
+   macro avg       0.99      0.99      0.99     80220
+weighted avg       0.99      0.99      0.99     80220
+
+____________________________________________________________________________________________________
+
+
+5. performing xgboost model using  Balancing algorithm
+(61499, 28) (20500, 28)
+accuracy score: 0.9790731707317073
+----------------------------------------------------------------------------------------------------
+confusion matrix
+[[20049     0     1     8]
+ [  197     0     0     1]
+ [   48     0     0    10]
+ [  164     0     0    22]]
+----------------------------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99     20058
+           1       0.00      0.00      0.00       198
+           2       0.00      0.00      0.00        58
+           3       0.54      0.12      0.19       186
+
+   micro avg       0.98      0.98      0.98     20500
+   macro avg       0.38      0.28      0.30     20500
+weighted avg       0.96      0.98      0.97     20500
+
+____________________________________________________________________________________________________
+
+
+6. performing xgboost model using UpSample Balancing algorithm
+..UpSampling on input dataset
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\Users\Flash\Anaconda3\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
+C:\Users\Flash\Anaconda3\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
+C:\Users\Flash\Anaconda3\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>new class counts after up sampling
+3    80220
+2    80220
+1    80220
+0    80220
+Name: GRADE, dtype: int64
+(240660, 28) (80220, 28)
+accuracy score: 0.7615806532036898
+----------------------------------------------------------------------------------------------------
+confusion matrix
+[[13484  4984   274  1338]
+ [ 3332 14551   649  1549]
+ [    0     0 20155     0]
+ [ 3683  1824  1493 12904]]
+----------------------------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.66      0.67      0.66     20080
+           1       0.68      0.72      0.70     20081
+           2       0.89      1.00      0.94     20155
+           3       0.82      0.65      0.72     19904
+
+   micro avg       0.76      0.76      0.76     80220
+   macro avg       0.76      0.76      0.76     80220
+weighted avg       0.76      0.76      0.76     80220
+
+____________________________________________________________________________________________________
+
+
+7. performing xgboost model using DownSample Balancing algorithm
+..DownSampling on input dataset
+new class counts after down sampling
+3    180
+2    180
+1    180
+0    180
+Name: GRADE, dtype: int64
+(540, 28) (180, 28)
+accuracy score: 0.5611111111111111
+----------------------------------------------------------------------------------------------------
+confusion matrix
+[[27 15  3  5]
+ [12 24  0  1]
+ [ 1  0 36  6]
+ [ 6 10 20 14]]
+----------------------------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.59      0.54      0.56        50
+           1       0.49      0.65      0.56        37
+           2       0.61      0.84      0.71        43
+           3       0.54      0.28      0.37        50
+
+   micro avg       0.56      0.56      0.56       180
+   macro avg       0.56      0.58      0.55       180
+weighted avg       0.56      0.56      0.54       180
+
+____________________________________________________________________________________________________
+
+
+8. performing xgboost model using smote Balancing algorithm
+..UpSampling on input dataset
+new class counts after up sampling
+(320880, 28) (320880,)
+(240660, 28) (80220, 28)
+accuracy score: 0.806644228371977
+----------------------------------------------------------------------------------------------------
+confusion matrix
+[[16158  2279   245  1387]
+ [ 1259 15990   626  2263]
+ [    6    55 19229   810]
+ [ 1736  2674  2171 13332]]
+----------------------------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.84      0.81      0.82     20069
+           1       0.76      0.79      0.78     20138
+           2       0.86      0.96      0.91     20100
+           3       0.75      0.67      0.71     19913
+
+   micro avg       0.81      0.81      0.81     80220
+   macro avg       0.80      0.81      0.80     80220
+weighted avg       0.80      0.81      0.80     80220
 
 ____________________________________________________________________________________________________
 
