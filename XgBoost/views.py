@@ -4,6 +4,7 @@ import pandas as pd
 import os
 from django.conf import settings
 from django.http import HttpResponse
+from joblib import load, dump
 
 ppat = 'D:/2/models/Model_Web/XgBoost/templates/XgBoost'
 def home(request):
@@ -15,8 +16,9 @@ def op1(request):
         # try:
         file = request.FILES['excel']
         df = pd.read_excel(file)
-
-        return render(request, 'XgBoost/index_o.html', {'con_recommendation': [1]*10})
+        val = load('XgBoost/Results/solution.joblib')
+        print(val)
+        return render(request, 'XgBoost/index_o.html', {'con_recommendation': [1]*10, 'val':val})
         # except:
         #     return render(request, 'XgBoost/index_2.html')
 
