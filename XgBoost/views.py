@@ -17,7 +17,7 @@ def op1(request):
         df = pd.read_excel(file)
         # df['new_col'] = [4]*df.shape[0]
         print(df.info())
-        df.to_excel("Xgboost/Results/op1_result.xlsx")
+        df.to_excel("Xgboost/op1_result.xlsx")
         return render(request, 'XgBoost/index_o.html', {'l': 1})
         # except:
         #     return render(request, 'XgBoost/index_2.html')
@@ -30,7 +30,7 @@ from django.conf import settings
 import mimetypes
 
 # f = 'D:/2/models/Model_Web/XgBoost/Results/'
-f = 'XgBoost/Results/'
+f = 'XgBoost/'
 
 def download_1(request):
     file_path= f+"op1_result.xlsx" # Select your path of file here.
