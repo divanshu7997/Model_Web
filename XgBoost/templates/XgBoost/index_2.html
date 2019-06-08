@@ -9,7 +9,7 @@
 <body>
     <h1>MSM output analyzer</h1>
     <h3> Operation-1</h3>
-    <h2 style="color: red"> No Excel File</h2>
+    <h2 style="color: red">Some Issue While Uploading CSV File</h2>
    
     <form action="{% url 'op1' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
@@ -19,7 +19,7 @@
       {% csrf_token %}
     </form>
 
-    <form action="{% url 'op2' %}">
+    <form action="{% url 'op2' %}" rel="noopener noopener">
         <input type="submit" value="NoteBook" />
     </form>
 
