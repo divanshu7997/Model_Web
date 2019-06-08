@@ -21,6 +21,10 @@
       <a href= {% url 'download_1' %}> Download file</a>
     </form>
 
+    {% for element in con_recommendation %}
+        {{ element }}
+    {% endfor %}
+
 </body>
 {% csrf_token %}
 

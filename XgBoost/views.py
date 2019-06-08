@@ -15,10 +15,8 @@ def op1(request):
         # try:
         file = request.FILES['excel']
         df = pd.read_excel(file)
-        # df['new_col'] = [4]*df.shape[0]
-        print(df.info())
-        df.to_excel("Xgboost/op1_result.xlsx")
-        return render(request, 'XgBoost/index_o.html', {'l': 1})
+
+        return render(request, 'XgBoost/index_o.html', {'con_recommendation': [1]*10})
         # except:
         #     return render(request, 'XgBoost/index_2.html')
 
