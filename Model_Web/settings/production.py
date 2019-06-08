@@ -34,7 +34,7 @@ MANAGERS = ADMINS
 SECRET_KEY = os.environ.get('SECRET_KEY', '$@&*)#(#!esa^!1(jxw$$242h9g3rnzqtt-0v3^!qnioi)qzu3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['model-web.herokuapp.com', '127.0.0.1']
 

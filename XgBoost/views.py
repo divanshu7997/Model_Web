@@ -12,15 +12,15 @@ def home(request):
 
 def op1(request):
     if request.method=='POST':
-        try:
-            file = request.FILES['excel']
-            df = pd.read_excel(file)
-            # df['new_col'] = [4]*df.shape[0]
-            print(df.info())
-            df.to_excel("Xgboost/Results/op1_result.xlsx")
-            return render(request, 'XgBoost/index_o.html', {'l': 1})
-        except:
-            return render(request, 'XgBoost/index_2.html')
+        # try:
+        file = request.FILES['excel']
+        df = pd.read_excel(file)
+        # df['new_col'] = [4]*df.shape[0]
+        print(df.info())
+        df.to_excel("Xgboost/Results/op1_result.xlsx")
+        return render(request, 'XgBoost/index_o.html', {'l': 1})
+        # except:
+        #     return render(request, 'XgBoost/index_2.html')
 
 # path = 'file:///K:/pras/django/Elucidata/api/Results/result2.xlsx'
 
